@@ -1,5 +1,6 @@
 ## Requres at least Windows Server 2019 or
 ## Windows 10 build 17763 / Version 1809 to run
+## Also requires use of Windows containers
 
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
