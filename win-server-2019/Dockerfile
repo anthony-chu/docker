@@ -18,7 +18,7 @@ RUN cd c:\\Users\\Administrator\\Downloads
 ## Silent installation instructions:
 ## https://www.java.com/en/download/help/silent_install.xml
 ##
-## RUN set JAVA_HOME="c:\Program Files\Java\..."
+## RUN set JAVA_HOME=c:\Program Files\Java\...
 ## RUN set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH%
 ##
 
