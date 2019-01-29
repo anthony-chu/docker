@@ -6,13 +6,13 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 ENV ADOPT_JDK_BASE_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08 \
 	ADOPT_JDK_ZIP=OpenJDK8U-jdk_x64_windows_hotspot_8u202b08.zip \
-	BASE_URL=https://releases.liferay.com/portal/snapshot-master/latest/ \
-	7Z_FILE=liferay-portal-tomcat-master.7z \
+	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest/ \
+	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
 	JAVA_DIR="c:\\Program Files\\Java"
 
 RUN cd c:\\Users\\Administrator\\Downloads
 
-RUN powershell.exe -Command Invoke-WebRequest %BASE_URL%/%7Z_FILE% -O %7Z_FILE%
+RUN powershell.exe -Command Invoke-WebRequest %SNAPSHOT_URL%/%SNAPSHOT_FILE% -O %SNAPSHOT_FILE%
 
 RUN powershell.exe -Command \
 	Invoke-WebRequest https://www.7-zip.org/a/7z1806-x64.exe -O 7z1806-x64.exe
@@ -35,7 +35,7 @@ RUN set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH%
 
 RUN cd c:\\Users\\Administrator\\Desktop
 
-RUN 7z x ..\\%&Z_FILE% > NUL:
+RUN 7z x ..\\%SNAPSHOT_FILE% > NUL:
 
 RUN cd liferay-portal-master
 
