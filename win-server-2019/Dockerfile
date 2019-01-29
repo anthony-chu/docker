@@ -10,38 +10,23 @@ ENV ADOPT_JDK_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/dow
 	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
 	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest/
 
-RUN cd c:\\Users\\Administrator\\Downloads
-
-RUN powershell.exe -Command Invoke-WebRequest %SNAPSHOT_URL%/%SNAPSHOT_FILE% -O %SNAPSHOT_FILE%
-
-RUN powershell.exe -Command \
-	Invoke-WebRequest https://www.7-zip.org/a/7z1806-x64.exe -O 7z1806-x64.exe
-
-RUN 7z1806-x64.exe /S /D c:\\Program Files\\7-Zip
-
-RUN set PATH=%PATH%;c:\\Program Files\\7-Zip
-
-RUN powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP%
-
-RUN md %JAVA_DIR%
-
-RUN cd %JAVA_DIR%
-
-RUN 7z x c:\\Users\\Administrator\\Downloads\\%ADOPT_JDK_ZIP% > NUL:
-
-RUN set JAVA_HOME=%JAVA_DIR%\jdk8u202-b08
-
-RUN set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH%
-
-RUN cd c:\\Users\\Administrator\\Desktop
-
-RUN 7z x ..\\%SNAPSHOT_FILE% > NUL:
-
-RUN cd liferay-portal-master
-
-RUN echo setup.wizard.enabled=false >> portal-ext.properties && \
-    echo browser.launcher.url= >> portal-ext.properties
-
-RUN cd tomcat-9.0.10\\bin
+RUN cd c:\\Users\\Administrator\\Downloads && \
+	powershell.exe -Command Invoke-WebRequest %SNAPSHOT_URL%/%SNAPSHOT_FILE% -O %SNAPSHOT_FILE% && \
+	powershell.exe -Command \
+		Invoke-WebRequest https://www.7-zip.org/a/7z1806-x64.exe -O 7z1806-x64.exe && \
+	7z1806-x64.exe /S /D c:\\Program Files\\7-Zip && \
+	set PATH=%PATH%;c:\\Program Files\\7-Zip && \
+	powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP% && \
+	md %JAVA_DIR% && \
+	cd %JAVA_DIR% && \
+	7z x c:\\Users\\Administrator\\Downloads\\%ADOPT_JDK_ZIP% > NUL: && \
+	set JAVA_HOME=%JAVA_DIR%\jdk8u202-b08 && \
+	set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH% && \
+	cd c:\\Users\\Administrator\\Desktop && \
+	7z x ..\\%SNAPSHOT_FILE% > NUL: && \
+	cd liferay-portal-master && \
+	echo setup.wizard.enabled=false >> portal-ext.properties && \
+    echo browser.launcher.url= >> portal-ext.properties && \
+	cd tomcat-9.0.10\\bin
 
 CMD ["catalina.bat", "run"]
