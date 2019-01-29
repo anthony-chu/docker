@@ -12,7 +12,7 @@ RUN cd c:\\Users\\Administrator\\Downloads
 ##
 ## TODO: Java installation
 ##
-## Option 1: Figure out JDK8 installer download
+## Option 1: Figure out JDK8 installer download with licensing agreement
 ## Option 2: Use JDK 11 installer
 ## Option 3: Have JDK8 installer alongside Dockerfile
 ##
