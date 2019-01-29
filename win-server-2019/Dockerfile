@@ -6,9 +6,9 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 ENV ADOPT_JDK_BASE_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08 \
 	ADOPT_JDK_ZIP=OpenJDK8U-jdk_x64_windows_hotspot_8u202b08.zip \
-	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest/ \
+	JAVA_DIR="c:\\Program Files\\Java" \
 	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
-	JAVA_DIR="c:\\Program Files\\Java"
+	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest/
 
 RUN cd c:\\Users\\Administrator\\Downloads
 
