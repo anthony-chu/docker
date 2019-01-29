@@ -18,7 +18,7 @@ RUN cd c:\\Users\\Administrator\\Downloads
 ## Silent installation instructions:
 ## https://www.java.com/en/download/help/silent_install.xml
 ##
-## RUN set JAVA_HOME=c:\Program Files\Java\...
+## RUN set JAVA_HOME="c:\Program Files\Java\..."
 ## RUN set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH%
 ##
 
@@ -31,7 +31,14 @@ RUN 7z1806-x64.exe /S /D c:\\Program Files\\7-Zip
 
 RUN set PATH=%PATH%;c:\\Program Files\\7-Zip
 
-RUN 7z x %&Z_FILE% > NUL:
+RUN cd c:\\Users\\Administrator\\Desktop
+
+RUN 7z x ..\\%&Z_FILE% > NUL:
+
+RUN cd liferay-portal-master
+
+RUN echo setup.wizard.enabled=false >> portal-ext.properties && \
+    echo browser.launcher.url= >> portal-ext.properties
 
 RUN cd liferay-portal-master\\tomcat-9.0.10\bin
 
