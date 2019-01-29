@@ -24,6 +24,7 @@ RUN cd c:\\Users\\Administrator\\Downloads && \
 	set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH% && \
 	cd c:\\Users\\Administrator\\Desktop && \
 	7z x ..\\%SNAPSHOT_FILE% > NUL: && \
+	del c:\\Users\Administrator\\Downloads\* && \
 	cd liferay-portal-master && \
 	echo setup.wizard.enabled=false >> portal-ext.properties && \
     echo browser.launcher.url= >> portal-ext.properties && \
