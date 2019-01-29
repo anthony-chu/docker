@@ -23,7 +23,7 @@ RUN set PATH=%PATH%;c:\\Program Files\\7-Zip
 
 RUN powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_BASE_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP%
 
-RUN cd %JAVA_DIR%
+RUN mkdir %JAVA_DIR%
 
 RUN cd %JAVA_DIR%
 
