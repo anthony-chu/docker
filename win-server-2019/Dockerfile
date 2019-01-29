@@ -4,7 +4,7 @@
 
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
-ENV ADOPT_JDK_BASE_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08 \
+ENV ADOPT_JDK_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08 \
 	ADOPT_JDK_ZIP=OpenJDK8U-jdk_x64_windows_hotspot_8u202b08.zip \
 	JAVA_DIR="c:\\Program Files\\Java" \
 	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
@@ -21,7 +21,7 @@ RUN 7z1806-x64.exe /S /D c:\\Program Files\\7-Zip
 
 RUN set PATH=%PATH%;c:\\Program Files\\7-Zip
 
-RUN powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_BASE_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP%
+RUN powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP%
 
 RUN md %JAVA_DIR%
 
