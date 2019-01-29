@@ -4,24 +4,13 @@
 
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
-ENV BASE_URL=https://releases.liferay.com/portal/snapshot-master/latest/ \
-	7Z_FILE=liferay-portal-tomcat-master.7z
+ENV ADOPT_JDK_BASE_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download \
+	ADOPT_JDK_ZIP=jdk8u202-b08/OpenJDK8U-jdk_x64_windows_hotspot_8u202b08.zip \
+	BASE_URL=https://releases.liferay.com/portal/snapshot-master/latest/ \
+	7Z_FILE=liferay-portal-tomcat-master.7z \
+	JAVA_DIR="c:\\Program Files\\Java"
 
 RUN cd c:\\Users\\Administrator\\Downloads
-
-##
-## TODO: Java installation
-##
-## Option 1: Figure out JDK8 installer download with licensing agreement
-## Option 2: Use JDK 11 installer
-## Option 3: Have JDK8 installer alongside Dockerfile
-##
-## Silent installation instructions:
-## https://www.java.com/en/download/help/silent_install.xml
-##
-## RUN set JAVA_HOME=c:\Program Files\Java\...
-## RUN set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH%
-##
 
 RUN powershell.exe -Command Invoke-WebRequest %BASE_URL%/%7Z_FILE% -O %7Z_FILE%
 
@@ -31,6 +20,18 @@ RUN powershell.exe -Command \
 RUN 7z1806-x64.exe /S /D c:\\Program Files\\7-Zip
 
 RUN set PATH=%PATH%;c:\\Program Files\\7-Zip
+
+RUN powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_BASE_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP%
+
+RUN cd %JAVA_DIR%
+
+RUN cd %JAVA_DIR%
+
+RUN 7z x c:\\Users\\Administrator\\Downloads\\%ADOPT_JDK_ZIP% > NUL:
+
+RUN set JAVA_HOME=%JAVA_DIR%\jdk8u202-b08
+
+RUN set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH%
 
 RUN cd c:\\Users\\Administrator\\Desktop
 
