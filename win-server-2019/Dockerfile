@@ -10,7 +10,8 @@ ENV ADOPT_JDK_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/dow
 	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
 	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest/
 
-RUN cd c:\\Users\\Administrator\\Downloads && \
+RUN SETLOCAL ENABLEEXTENSIONS && \
+	cd c:\\Users\\Administrator\\Downloads && \
 	powershell.exe -Command Invoke-WebRequest %SNAPSHOT_URL%/%SNAPSHOT_FILE% -O %SNAPSHOT_FILE% && \
 	powershell.exe -Command \
 		Invoke-WebRequest https://www.7-zip.org/a/7z1806-x64.exe -O 7z1806-x64.exe && \
