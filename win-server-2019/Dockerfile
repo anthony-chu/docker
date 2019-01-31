@@ -41,4 +41,8 @@ RUN cd %USERPROFILE%\\Desktop && \
 	echo setup.wizard.enabled=false >> portal-ext.properties && \
     echo browser.launcher.url= >> portal-ext.properties
 
-CMD ["c:\\Users\\Administrator\\Desktop\\tomcat-9.0.10\\bin\\catalina.bat", "run"]
+COPY init.bat c:\\init.bat
+
+CMD [ "c:\\init.bat" ]
+
+EXPOSE 8080
