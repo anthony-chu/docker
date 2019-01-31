@@ -4,7 +4,9 @@
 
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
-ENV ADOPT_JDK_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08 \
+ENV 7Z_INSTALL_DIR=%PROGRAMFILES%\\7-Zip \
+	7Z_INSTALL_FILE=7z1806-x64.exe \
+	ADOPT_JDK_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08 \
 	ADOPT_JDK_ZIP=OpenJDK8U-jdk_x64_windows_hotspot_8u202b08.zip \
 	JAVA_DIR="c:\\Program Files\\Java" \
 	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
@@ -14,9 +16,9 @@ RUN SETLOCAL ENABLEEXTENSIONS && \
 	cd c:\\Users\\Administrator\\Downloads && \
 	powershell.exe -Command Invoke-WebRequest %SNAPSHOT_URL%/%SNAPSHOT_FILE% -O %SNAPSHOT_FILE% && \
 	powershell.exe -Command \
-		Invoke-WebRequest https://www.7-zip.org/a/7z1806-x64.exe -O 7z1806-x64.exe && \
-	7z1806-x64.exe /S /D c:\\Program Files\\7-Zip && \
-	set PATH=%PATH%;c:\\Program Files\\7-Zip && \
+		Invoke-WebRequest https://www.7-zip.org/a/%7Z_INSTALL_FILE% -O %7Z_INSTALL_FILE% && \
+	%7Z_INSTALL_FILE% /S /D %7Z_INSTALL_DIR% && \
+	set PATH=%PATH%;%7Z_INSTALL_DIR% && \
 	powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP% && \
 	md %JAVA_DIR% && \
 	cd %JAVA_DIR% && \
