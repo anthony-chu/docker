@@ -31,7 +31,7 @@ RUN SETLOCAL ENABLEEXTENSIONS && \
 	set JAVA_HOME=%JAVA_DIR%\\jdk8u202-b08 && \
 	set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH% && \
 	cd c:\\Users\\Administrator\\Desktop && \
-	7z x ..\\%SNAPSHOT_FILE% > NUL: && \
+	7z x ..\\Downloads\\%SNAPSHOT_FILE% > NUL: && \
 	del c:\\Users\Administrator\\Downloads\* && \
 	cd liferay-portal-master && \
 	echo setup.wizard.enabled=false >> portal-ext.properties && \
