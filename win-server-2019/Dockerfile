@@ -24,13 +24,19 @@ RUN SETLOCAL ENABLEEXTENSIONS && \
 	powershell.exe -Command \
 		$ProgressPreference = 'SilentlyContinue'; \
 		Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP% && \
-	cd %PROGRAMFILES% && \
-	md Java && \
+	%7Z_INSTALL_FILE% /S /D %7Z_INSTALL_DIR% && \
+	setx PATH "%PATH%;%7Z_INSTALL_DIR%"
+
+# Install AdoptOpenJDK-8
+
+RUN	cd %PROGRAMFILES% && \
+	mkdir Java && \
 	cd %JAVA_DIR% && \
-	7z x c:\\Users\\Administrator\\Downloads\\%ADOPT_JDK_ZIP% > NUL: && \
-	set JAVA_HOME=%JAVA_DIR%\\jdk8u202-b08 && \
-	set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH% && \
-	cd c:\\Users\\Administrator\\Desktop && \
+	7z x %USERPROFILE%\\Downloads\\%ADOPT_JDK_ZIP% > NUL: && \
+	setx JAVA_HOME "%PROGRAMFILES%\\Java\\jdk8u202-b08" && \
+	setx PATH "%JAVA_HOME%;%JAVA_HOME%\bin;%PATH%"
+
+RUN cd %USERPROFILE%\\Desktop && \
 	7z x ..\\Downloads\\%SNAPSHOT_FILE% > NUL: && \
 	del c:\\Users\Administrator\\Downloads\* && \
 	cd liferay-portal-master && \
