@@ -2,5 +2,7 @@
 
 ## Environment Details
 
-- Java: OpenJDK JDK 8
-- Liferay Portal: master snapshot
+|Product|Version|
+|:-----:|:-----:|
+|Java|OpenJDK JDK 8|
+|Portal| master snapshot|

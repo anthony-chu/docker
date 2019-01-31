@@ -10,8 +10,10 @@
 
 ## Environment Details
 
-- Java: AdoptOpenJDK JDK 8
-- Liferay Portal: master snapshot
+|Product|Version|
+|:-----:|:-----:|
+|Java|AdoptOpenJDK JDK 8|
+|Portal| master snapshot|
 
 ## Startup
 
