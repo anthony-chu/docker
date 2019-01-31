@@ -10,7 +10,7 @@ ENV 7Z_INSTALL_DIR=%PROGRAMFILES%\\7-Zip \
 	ADOPT_JDK_ZIP=OpenJDK8U-jdk_x64_windows_hotspot_8u202b08.zip \
 	JAVA_DIR="c:\\Program Files\\Java" \
 	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
-	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest/
+	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest
 
 RUN SETLOCAL ENABLEEXTENSIONS && \
 	cd c:\\Users\\Administrator\\Downloads && \
