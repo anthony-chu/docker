@@ -11,7 +11,10 @@ RUN apt-get update && \
     7z x ${ARCHIVE_FILE} && \
     cd ${LIFERAY_HOME} && \
     echo "browser.launcher.url=" >> portal-ext.properties && \
-    echo "setup.wizard.enabled=false" >> portal-ext.properties && \
-    tomcat-9.0.10/bin/catalina.sh run
+    echo "setup.wizard.enabled=false" >> portal-ext.properties
+
+COPY entrypoint.sh /entrypoint.sh
+
+CMD [ "./entrypoint.sh" ]
 
 EXPOSE 8080
