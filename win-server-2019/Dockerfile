@@ -12,8 +12,9 @@ ENV 7Z_INSTALL_DIR=C:\\Program\ Files\\7-Zip \
 	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
 	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest
 
-RUN SETLOCAL ENABLEEXTENSIONS && \
-	cd c:\\Users\\Administrator\\Downloads && \
+# Download snapshot-master, 7-Zip, and AdoptOpenJDK; install 7-Zip
+
+RUN cd %USERPROFILE%\\Downloads && \
 	powershell.exe -Command $ProgressPreference = 'SilentlyContinue'; \
 		Invoke-WebRequest %SNAPSHOT_URL%/%SNAPSHOT_FILE% -O %SNAPSHOT_FILE% && \
 	powershell.exe -Command \
