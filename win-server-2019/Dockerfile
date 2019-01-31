@@ -28,7 +28,6 @@ RUN SETLOCAL ENABLEEXTENSIONS && \
 	del c:\\Users\Administrator\\Downloads\* && \
 	cd liferay-portal-master && \
 	echo setup.wizard.enabled=false >> portal-ext.properties && \
-    echo browser.launcher.url= >> portal-ext.properties && \
-	cd tomcat-9.0.10\\bin
+    echo browser.launcher.url= >> portal-ext.properties
 
-CMD ["catalina.bat", "run"]
+CMD ["c:\\Users\\Administrator\\Desktop\\tomcat-9.0.10\\bin\\catalina.bat", "run"]
