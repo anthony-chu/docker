@@ -24,9 +24,9 @@ RUN SETLOCAL ENABLEEXTENSIONS && \
 	powershell.exe -Command \
 		$ProgressPreference = 'SilentlyContinue'; \
 		Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP% && \
-	cd "%PROGRAMFILES%" && \
+	cd %PROGRAMFILES% && \
 	md Java && \
-	cd "%JAVA_DIR%" %% \
+	cd %JAVA_DIR% && \
 	7z x c:\\Users\\Administrator\\Downloads\\%ADOPT_JDK_ZIP% > NUL: && \
 	set JAVA_HOME=%JAVA_DIR%\\jdk8u202-b08 && \
 	set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH% && \
