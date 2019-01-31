@@ -33,7 +33,7 @@ RUN	cd %PROGRAMFILES% && \
 	cd %JAVA_DIR% && \
 	7z x %USERPROFILE%\\Downloads\\%ADOPT_JDK_ZIP% > NUL: && \
 	setx JAVA_HOME "%PROGRAMFILES%\\Java\\jdk8u202-b08" && \
-	setx PATH "%JAVA_HOME%;%JAVA_HOME%\bin;%PATH%"
+	setx PATH "%JAVA_HOME%;%JAVA_HOME%\\bin;%PATH%"
 
 RUN cd %USERPROFILE%\\Desktop && \
 	7z x ..\\Downloads\\%SNAPSHOT_FILE% > NUL: && \
