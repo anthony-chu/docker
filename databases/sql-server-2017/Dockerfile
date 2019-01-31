@@ -12,6 +12,6 @@ RUN apt-get update && \
     apt-get install -y mssql-server && \
     /opt/mssql/bin/mssql-conf -n setup
 
-EXPOSE 1433
-
 CMD [ "/opt/mssql/bin/sqlservr" ]
+
+EXPOSE 1433
