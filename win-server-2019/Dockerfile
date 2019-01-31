@@ -14,12 +14,16 @@ ENV 7Z_INSTALL_DIR=%PROGRAMFILES%\\7-Zip \
 
 RUN SETLOCAL ENABLEEXTENSIONS && \
 	cd c:\\Users\\Administrator\\Downloads && \
-	powershell.exe -Command Invoke-WebRequest %SNAPSHOT_URL%/%SNAPSHOT_FILE% -O %SNAPSHOT_FILE% && \
+	powershell.exe -Command $ProgressPreference = 'SilentlyContinue'; \
+		Invoke-WebRequest %SNAPSHOT_URL%/%SNAPSHOT_FILE% -O %SNAPSHOT_FILE% && \
 	powershell.exe -Command \
+		$ProgressPreference = 'SilentlyContinue'; \
 		Invoke-WebRequest https://www.7-zip.org/a/%7Z_INSTALL_FILE% -O %7Z_INSTALL_FILE% && \
 	%7Z_INSTALL_FILE% /S /D %7Z_INSTALL_DIR% && \
 	set PATH=%PATH%;%7Z_INSTALL_DIR% && \
-	powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP% && \
+	powershell.exe -Command \
+		$ProgressPreference = 'SilentlyContinue'; \
+		Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP% && \
 	cd "%PROGRAMFILES%" && \
 	md Java && \
 	cd "%JAVA_DIR%" %% \
