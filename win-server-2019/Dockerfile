@@ -37,7 +37,6 @@ RUN	cd %PROGRAMFILES% && \
 
 RUN cd %USERPROFILE%\\Desktop && \
 	7z x ..\\Downloads\\%SNAPSHOT_FILE% > NUL: && \
-	del c:\\Users\Administrator\\Downloads\* && \
 	cd liferay-portal-master && \
 	echo setup.wizard.enabled=false >> portal-ext.properties && \
     echo browser.launcher.url= >> portal-ext.properties
