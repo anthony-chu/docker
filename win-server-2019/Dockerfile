@@ -28,7 +28,7 @@ RUN SETLOCAL ENABLEEXTENSIONS && \
 	md Java && \
 	cd "%JAVA_DIR%" %% \
 	7z x c:\\Users\\Administrator\\Downloads\\%ADOPT_JDK_ZIP% > NUL: && \
-	set JAVA_HOME=%JAVA_DIR%\jdk8u202-b08 && \
+	set JAVA_HOME=%JAVA_DIR%\\jdk8u202-b08 && \
 	set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH% && \
 	cd c:\\Users\\Administrator\\Desktop && \
 	7z x ..\\%SNAPSHOT_FILE% > NUL: && \
