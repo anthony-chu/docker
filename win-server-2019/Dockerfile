@@ -8,7 +8,7 @@ ENV 7Z_INSTALL_DIR=%PROGRAMFILES%\\7-Zip \
 	7Z_INSTALL_FILE=7z1806-x64.exe \
 	ADOPT_JDK_URL=https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08 \
 	ADOPT_JDK_ZIP=OpenJDK8U-jdk_x64_windows_hotspot_8u202b08.zip \
-	JAVA_DIR="c:\\Program Files\\Java" \
+	JAVA_DIR="%PROGRAMFILES%\\Java" \
 	SNAPSHOT_FILE=liferay-portal-tomcat-master.7z \
 	SNAPSHOT_URL=https://releases.liferay.com/portal/snapshot-master/latest
 
@@ -20,8 +20,9 @@ RUN SETLOCAL ENABLEEXTENSIONS && \
 	%7Z_INSTALL_FILE% /S /D %7Z_INSTALL_DIR% && \
 	set PATH=%PATH%;%7Z_INSTALL_DIR% && \
 	powershell.exe -Command Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP% && \
-	md %JAVA_DIR% && \
-	cd %JAVA_DIR% && \
+	cd "%PROGRAMFILES%" && \
+	md Java && \
+	cd "%JAVA_DIR%" %% \
 	7z x c:\\Users\\Administrator\\Downloads\\%ADOPT_JDK_ZIP% > NUL: && \
 	set JAVA_HOME=%JAVA_DIR%\jdk8u202-b08 && \
 	set PATH=%JAVA_HOME%;%JAVA_HOME%\bin;%PATH% && \
