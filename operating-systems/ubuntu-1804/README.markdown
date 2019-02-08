@@ -5,6 +5,7 @@
 |Product|Version|
 |:-----:|:-----:|
 |Java|OpenJDK JDK 8|
+|Operating System|Ubuntu 18.04|
 |Portal| master snapshot|
 
 ## Startup

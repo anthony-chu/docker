@@ -13,6 +13,7 @@
 |Product|Version|
 |:-----:|:-----:|
 |Java|AdoptOpenJDK JDK 8|
+|Operating System|Windows Server Core 2019|
 |Portal| master snapshot|
 
 ## Startup
