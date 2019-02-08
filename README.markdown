@@ -12,5 +12,5 @@ docker build -t <tagname> .
 
 Listed below are the currently available docker images:
 
-- [Ubuntu 18.04](/ubuntu1804)
-- [Microsoft Windows Server 2019](/win-server-2019)
+- [Ubuntu 18.04](/operating-systems/ubuntu1804)
+- [Microsoft Windows Server 2019](/operating-systems/win-server-2019)
