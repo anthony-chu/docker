@@ -20,7 +20,7 @@ RUN cd %USERPROFILE%\\Downloads && \
 	powershell.exe -Command \
 		$ProgressPreference = 'SilentlyContinue'; \
 		Invoke-WebRequest https://www.7-zip.org/a/%7Z_INSTALL_FILE% -O %7Z_INSTALL_FILE% && \
-	powershell.exe -Command \
+	powershell.exe [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
 		$ProgressPreference = 'SilentlyContinue'; \
 		Invoke-WebRequest %ADOPT_JDK_URL%/%ADOPT_JDK_ZIP% -O %ADOPT_JDK_ZIP% && \
 	%7Z_INSTALL_FILE% /S /D %7Z_INSTALL_DIR% && \
